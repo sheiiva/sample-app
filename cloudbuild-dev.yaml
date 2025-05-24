@@ -9,7 +9,7 @@ steps:
     args: [
       'build',
       '-t',
-      'us-central1-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild-dev:v1.0',
+      'us-central1-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild-dev:v2.0',
       '.'
     ]
 
@@ -17,7 +17,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push',
-      'us-central1-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild-dev:v1.0'
+      'us-central1-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild-dev:v2.0'
     ]
 
   # Step 4: Deploy to the appropriate namespace (prod or dev)
@@ -29,7 +29,7 @@ steps:
     - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cluster'
 
 images:
-  - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild-dev:v1.0'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-repository/hello-cloudbuild-dev:v2.0'
 
 substitutions:
   _NAMESPACE: 'dev'  # Default value; overridden by triggers
